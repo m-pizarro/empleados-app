@@ -1,0 +1,32 @@
+.card-container {
+  margin: auto;
+  margin-top: 2ch;
+  width: 70%;
+}
+
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.toolbar {
+  margin-bottom: 20px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 300px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-form-field.small {
+  --mat-form-field-container-height: 40px;
+  --mat-form-field-container-vertical-padding: 8px;
+}
+
+mat-toolbar.background {
+  background-color: white;
+}

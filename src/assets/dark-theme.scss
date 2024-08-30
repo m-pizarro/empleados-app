@@ -1,0 +1,14 @@
+// Import Angular Material theming functions
+@use '@angular/material' as mat;
+
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$violet-palette,
+    ),
+  )
+);
+
+@include mat.all-component-themes($dark-theme);
+@include mat.strong-focus-indicators-theme($dark-theme);

@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>
+  {{ data.nombre ? 'Editar Empleado' : 'Agregar Empleado' }}
+</h1>
+<div mat-dialog-content>
+  <form class="form-edit" [formGroup]="empleadoForm">
+    <mat-form-field appearance="fill" class="input-edit">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="empleadoForm.get('nombre')?.invalid"
+        >Nombre es requerido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-edit">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" />
+      <mat-error *ngIf="empleadoForm.get('apellido')?.invalid"
+        >Apellido es requerido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-edit">
+      <mat-label>Puesto</mat-label>
+      <mat-select formControlName="puesto" required>
+        <mat-option *ngFor="let puesto of puestos" [value]="puesto">
+          {{ puesto }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="empleadoForm.get('puesto')?.invalid"
+        >Puesto es requerido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-edit">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [max]="today"
+        formControlName="fechaNacimiento"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="empleadoForm.get('fechaNacimiento')?.invalid"
+        >Fecha de nacimiento es requerida</mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button [disabled]="empleadoForm.invalid" (click)="onSave()">
+    Aceptar
+  </button>
+</div>
